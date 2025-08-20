@@ -1,0 +1,48 @@
+//Health-mood tracker 
+import datetime
+import csv
+
+FILENAME = "health mood_tracker.csv"
+
+def log_entry():
+    date = datetime.date.today()
+    mood = input("How is your mood today? (Happy/Neutral/Sad/Stressed): ")
+    energy = input("Energy level (1-10): ")
+    sleep = input("Hours of sleep: ")
+    notes = input("Any notes for today?: ")
+
+    with open(FILENAME, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([date, mood, energy, sleep, notes])
+
+    print("Entry saved!")
+
+def view_entries():
+    try:
+        with open(FILENAME, "r") as file:
+            reader = csv.reader(file)
+            print("\n Your Health & Mood Logs:")
+            for row in reader:
+                print(row)
+    except FileNotFoundError:
+        print("No entries yet!")
+
+def main():
+    while True:
+        print("\n--- Health & Mood Tracker ---")
+        print("1. Log Today’s Mood")
+        print("2. View Past Entries")
+        print("3. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            log_entry()
+        elif choice == "2":
+            view_entries()
+        elif choice == "3":
+            print("Stay healthy and positive ")
+            break
+        else:
+            print("Invalid choice, try again.")
+
+main()
