@@ -1,4 +1,4 @@
-# Mood--journal.-Py
+# Mood--journal-Py
 #  Health & Mood Tracker  
 
 A simple Python program that helps you *log your daily mood, sleep hours, and personal notes*. All data is stored in a `.csv` file so you can keep track of your health and well-being over time.  
